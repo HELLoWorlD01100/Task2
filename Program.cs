@@ -27,9 +27,8 @@ namespace Task_2
                 var invertedColor = colorMinId.InvertColor();
                 var firstShareIds = nodes.Where(x => x.Color == colorMinId).Select(x => x.Id).OrderBy(x => x);
                 var secondShareIds = nodes.Where(x => x.Color == invertedColor).Select(x => x.Id).OrderBy(x => x);
-                FileWriter.Write(_filePathOut, firstShareIds);
-                FileWriter.Write(_filePathOut, "0");
-                FileWriter.Write(_filePathOut, secondShareIds);
+                FileWriter.Write(_filePathOut, string.Join(" ", firstShareIds.Append(0)));
+                FileWriter.Write(_filePathOut, string.Join(" ", secondShareIds));
             }
         }
     }
